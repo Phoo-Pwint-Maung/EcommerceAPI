@@ -1,0 +1,31 @@
+### Get all Product list
+GET http://localhost:8080/api/v1/product-list
+Accept: application/json
+
+### Add New Product
+POST http://localhost:8080/api/v1/product-list
+Content-Type: application/json
+
+{
+    "id": 5,
+    "name": "Sony WH-1000XM5 Headphones",
+    "price": 399.99,
+    "category": "Accessories",
+    "stock": 25
+}
+
+### Update Product
+PUT http://localhost:8080/api/v1/product-list/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "iPhone 14 Pro",
+    "price": 1199.99,
+    "category": "Electronics",
+    "stock": 10
+}
+
+### Delete Product
+DELETE http://localhost:8080/api/v1/product-list/4
+Content-Type: application/json
