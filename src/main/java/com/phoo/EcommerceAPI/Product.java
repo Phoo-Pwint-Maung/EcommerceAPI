@@ -1,10 +1,21 @@
 package com.phoo.EcommerceAPI;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
 import java.util.Objects;
+
+@Entity
 
 public class Product {
 
-    private int id;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private double price;
     private String category;
@@ -14,7 +25,7 @@ public class Product {
     public Product(){};
 
     /// Parameter Constructor
-    public Product(int id,String name,double price,String category,int stock){
+    public Product(Integer id,String name,double price,String category,int stock){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -23,7 +34,7 @@ public class Product {
     }
 
     /// Getter
-    public int getId(){
+    public Integer getId(){
         return id;
     }
     public String getName(){
@@ -39,7 +50,7 @@ public class Product {
         return stock;
     }
     /// Setter
-    public void setId(int id){
+    public void setId(Integer id){
         this.id = id;
     }
     public void setName(String name){
@@ -57,12 +68,18 @@ public class Product {
 
     /// equal and hash
 
+//
+
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Product that = (Product) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(price, that.price)
-                && Objects.equals(category,that.category)&& Objects.equals(stock,that.stock);
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 &&
+                stock == product.stock &&
+                Objects.equals(id, product.id) && // id ကို ဒီလို နှိုင်းယှဉ်ပါ
+                Objects.equals(name, product.name) &&
+                Objects.equals(category, product.category);
     }
 
     @Override

@@ -2,20 +2,19 @@ package com.phoo.EcommerceAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.annotation.PostConstruct; // Spring Boot 3.x အတွက်
+import java.util.TimeZone;
 
 @SpringBootApplication
-@RestController
 public class EcommerceApiApplication {
 
-	public static void main(String[] args) {
+//    @PostConstruct
+//    public void init() {
+//
+//        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+//    }
+
+    public static void main(String[] args) {
         SpringApplication.run(EcommerceApiApplication.class, args);
-	}
-
-    @GetMapping
-    public String helloWorld(){
-        return "Hello world spring boot";
     }
-
 }
